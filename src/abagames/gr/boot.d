@@ -56,7 +56,7 @@ version (Win32_release) {
     _minit();
     try {
       _moduleCtor();
-      char exe[4096];
+      char[4096] exe;
       GetModuleFileNameA(null, exe, 4096);
       char[][1] prog;
       prog[0] = std.string.toString(exe);

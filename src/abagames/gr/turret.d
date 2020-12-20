@@ -52,8 +52,8 @@ public class Turret {
   invariant {
     assert(pos.x < 15 && pos.x > -15);
     assert(pos.y < 60 && pos.y > -40);
-    assert(deg <>= 0);
-    assert(baseDeg <>= 0);
+    assert(deg != 0);
+    assert(baseDeg != 0);
     assert(bulletSpeed > 0);
   }
 
@@ -122,7 +122,7 @@ public class Turret {
       ad = 0;
     else
       ad = atan2(ax, ay);
-    assert(ad <>= 0);
+    assert(ad != 0);
     float od = td - ad;
     Math.normalizeDeg(od);
     float ts;
@@ -476,7 +476,7 @@ public class TurretSpec {
       if (sr < 0)
         sr = 0;
       speed = sqrt(sr * 0.6f);
-      assert(speed <>= 0);
+      assert(speed != 0);
       speed *= 0.12f;
       shield = 20;
       break;
@@ -492,7 +492,7 @@ public class TurretSpec {
       if (sr < 0)
         sr = 0;
       speed = sqrt(sr * 0.7f);
-      assert(speed <>= 0);
+      assert(speed != 0);
       speed *= 0.2f;
       shield = 12;
       break;
@@ -511,7 +511,7 @@ public class TurretSpec {
       if (sr < 0)
         sr = 0;
       speed = sqrt(sr * 0.7f);
-      assert(speed <>= 0);
+      assert(speed != 0);
       speed *= 0.33f;
       shield = 12;
       break;
@@ -526,7 +526,7 @@ public class TurretSpec {
       if (sr < 0)
         sr = 0;
       speed = sqrt(sr);
-      assert(speed <>= 0);
+      assert(speed != 0);
       speed *= 0.24f;
       break;
     case TurretType.MOVING:
@@ -541,7 +541,7 @@ public class TurretSpec {
       if (sr < 0)
         sr = 0;
       speed = sqrt(sr * 0.7f);
-      assert(speed <>= 0);
+      assert(speed != 0);
       speed *= 0.2f;
       break;
     }
@@ -549,7 +549,7 @@ public class TurretSpec {
       speed = 0.1f;
     else
       speed = sqrt(speed * 10) / 10;
-    assert(speed <>= 0);
+    assert(speed != 0);
     if (burstNum > 2) {
       if (rand.nextInt(4) == 0) {
         speed *= 0.8f;
@@ -652,7 +652,7 @@ public class TurretGroup {
         tbx = spec.offset.x;
         tby = y;
         d = atan2(tbx, tby);
-        assert(d <>= 0);
+        assert(d != 0);
         break;
       }
       tbx *= (1 - spec.distRatio);
@@ -700,8 +700,8 @@ public class TurretGroupSpec {
 
   invariant {
     assert(num >= 1 && num < 20);
-    assert(alignDeg <>= 0);
-    assert(alignWidth <>= 0);
+    assert(alignDeg != 0);
+    assert(alignWidth != 0);
     assert(radius >= 0);
     assert(distRatio >= 0 && distRatio <= 1);
     assert(offset.x < 10 && offset.x > -10);
@@ -749,15 +749,15 @@ public class MovingTurretGroup {
 
   invariant {
     assert(radius > -10);
-    assert(radiusAmpCnt <>= 0);
-    assert(deg <>= 0);
-    assert(rollAmpCnt <>= 0);
-    assert(swingAmpCnt <>= 0);
-    assert(swingAmpDeg <>= 0);
-    assert(swingFixDeg <>= 0);
-    assert(alignAmpCnt <>= 0);
-    assert(distDeg <>= 0);
-    assert(distAmpCnt <>= 0);
+    assert(radiusAmpCnt != 0);
+    assert(deg != 0);
+    assert(rollAmpCnt != 0);
+    assert(swingAmpCnt != 0);
+    assert(swingAmpDeg != 0);
+    assert(swingFixDeg != 0);
+    assert(alignAmpCnt != 0);
+    assert(distDeg != 0);
+    assert(distAmpCnt != 0);
     assert(centerPos.x < 15 && centerPos.x > -15);
     assert(centerPos.y < 60 && centerPos.y > -40);
   }
@@ -820,7 +820,7 @@ public class MovingTurretGroup {
           od = 0;
         else
           od = atan2(shipPos.x - centerPos.x, shipPos.y - centerPos.y);
-        assert(od <>= 0);
+        assert(od != 0);
         od += swingAmpDeg - deg;
         Math.normalizeDeg(od);
         deg += od * 0.1f;
@@ -843,7 +843,7 @@ public class MovingTurretGroup {
       } else {
         fs = sqrt(bx * bx + by * by);
         fd = atan2(bx, by);
-        assert(fd <>= 0);
+        assert(fd != 0);
       }
       fs *= 0.06f;
       turret[i].move(centerPos.x, centerPos.y, d, fs, fd);
@@ -900,20 +900,19 @@ public class MovingTurretGroupSpec {
 
   invariant {
     assert(num >= 1);
-    assert(alignDeg <>= 0);
-    assert(alignAmp <>= 0);
-    assert(alignAmpVel <>= 0);
-    assert(radiusBase <>= 0);
-    assert(radiusAmp <>= 0);
-    assert(radiusAmpVel <>= 0);
-    assert(rollDegVel <>= 0);
-    assert(rollAmp <>= 0);
-    assert(rollAmpVel <>= 0);
-    assert(swingDegVel <>= 0);
-    assert(swingAmpVel <>= 0);
-    assert(distRatio <>= 0);
+    assert(alignDeg != 0);
+    assert(alignAmp != 0);
+    assert(alignAmpVel != 0);
+    assert(radiusBase != 0);
+    assert(radiusAmp != 0);
+    assert(radiusAmpVel != 0);
+    assert(rollDegVel != 0);
+    assert(rollAmp != 0);
+    assert(rollAmpVel != 0);
+    assert(swingDegVel != 0);
+    assert(swingAmpVel != 0);
+    assert(distRatio != 0);
     assert(xReverse == 1 || xReverse == -1);
-
   }
 
   public this() {

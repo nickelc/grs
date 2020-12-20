@@ -61,9 +61,9 @@ public class TwinStick: Input {
       } else {
         ry = -ry;
         float rd = atan2(rx, ry) * reverse + rotate;
-        assert(rd <>= 0);
+        assert(rd != 0);
         float rl = sqrt(cast(float) rx * rx + cast(float) ry * ry);
-        assert(rl <>= 0);
+        assert(rl != 0);
         state.right.x = adjustAxis(cast(int) (sin(rd) * rl));
         state.right.y = adjustAxis(cast(int) (cos(rd) * rl));
       }

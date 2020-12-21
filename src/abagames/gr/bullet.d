@@ -177,9 +177,9 @@ public class Bullet: Actor {
     if (ox + oy < 0.5f) {
     //if (shape.checkCollision(ox, oy, s)) {
       shot.removeHitToBullet();
-      Smoke s = smokes.getInstance();
-      if (s)
-        s.set(pos, sin(deg) * speed, cos(deg) * speed, 0,
+      Smoke smoke = smokes.getInstance();
+      if (smoke)
+        smoke.set(pos, sin(deg) * speed, cos(deg) * speed, 0,
               Smoke.SmokeType.SPARK, 30, size * 0.5f);
       remove();
     }

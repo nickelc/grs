@@ -261,11 +261,11 @@ public class StageManager {
         (cast(int) platformPos[ppi].pos.x, cast(int) platformPos[ppi].pos.y);
       if (!platformEnemySpec.setFirstState(en.state, p.x, p.y, platformPos[ppi].deg))
         continue;
-      for (int i = 0; i < platformPosNum; i++) {
-        if (fabs(platformPos[ppi].pos.x - platformPos[i].pos.x) <= 1 &&
-            fabs(platformPos[ppi].pos.y - platformPos[i].pos.y) <= 1 &&
-            !platformPos[i].used) {
-          platformPos[i].used = true;
+      for (int j = 0; j < platformPosNum; j++) {
+        if (fabs(platformPos[ppi].pos.x - platformPos[j].pos.x) <= 1 &&
+            fabs(platformPos[ppi].pos.y - platformPos[j].pos.y) <= 1 &&
+            !platformPos[j].used) {
+          platformPos[j].used = true;
           ppn--;
         }
       }

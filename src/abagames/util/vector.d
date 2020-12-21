@@ -205,7 +205,7 @@ public class Vector {
       return false;
   }
 
-  public char[] toString() {
+  public override char[] toString() {
     return "(" ~ std.string.toString(x) ~ ", " ~ std.string.toString(y) ~ ")";
   }
 }

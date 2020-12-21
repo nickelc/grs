@@ -885,7 +885,7 @@ public class SmallShipEnemySpec: EnemySpec, HasAppearType {
     return true;
   }
 
-  public bool move(EnemyState es) {
+  public override bool move(EnemyState es) {
     if (!super.move(es))
       return false;
     switch (type) {
@@ -958,11 +958,11 @@ public class SmallShipEnemySpec: EnemySpec, HasAppearType {
     return true;
   }
 
-  public int score() {
+  public override int score() {
     return 50;
   }
 
-  public bool isBoss() {
+  public override bool isBoss() {
     return false;
   }
 }
@@ -1199,7 +1199,7 @@ public class ShipEnemySpec: EnemySpec, HasAppearType {
     return true;
   }
 
-  public bool move(EnemyState es) {
+  public override bool move(EnemyState es) {
     if (es.destroyedCnt >= SINK_INTERVAL)
       return false;
     if (!super.move(es))
@@ -1251,7 +1251,7 @@ public class ShipEnemySpec: EnemySpec, HasAppearType {
     super.draw(es);
   }
 
-  public int score() {
+  public override int score() {
     switch (shipClass) {
     case ShipClass.MIDDLE:
       return 100;
@@ -1262,7 +1262,7 @@ public class ShipEnemySpec: EnemySpec, HasAppearType {
     }
   }
 
-  public bool isBoss() {
+  public override bool isBoss() {
     if (shipClass == ShipClass.BOSS)
       return true;
     return false;
@@ -1368,7 +1368,7 @@ public class PlatformEnemySpec: EnemySpec {
     return true;
   }
 
-  public bool move(EnemyState es) {
+  public override bool move(EnemyState es) {
     if (!super.move(es))
       return false;
     es.pos.y -= field.lastScrollY;
@@ -1377,11 +1377,11 @@ public class PlatformEnemySpec: EnemySpec {
     return true;
   }
 
-  public int score() {
+  public override int score() {
     return 100;
   }
 
-  public bool isBoss() {
+  public override bool isBoss() {
     return false;
   }
 }

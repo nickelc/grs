@@ -263,7 +263,7 @@ public class NumIndicator: Actor {
     alpha = 1;
   }
 
-  public void init(Object[] args) {
+  public override void init(Object[] args) {
     scoreReel = cast(ScoreReel) args[0];
   }
 
@@ -325,7 +325,7 @@ public class NumIndicator: Actor {
     cnt = target[targetIdx].cnt;
   }
 
-  public void move() {
+  public override void move() {
     if (targetIdx < 0)
       return;
     Vector tp = target[targetIdx].pos;
@@ -370,7 +370,7 @@ public class NumIndicator: Actor {
       gotoNextTarget();
   }
 
-  public void draw() {
+  public override void draw() {
     Screen.setColor(alpha, alpha, alpha);
     switch (type) {
     case IndicatorType.SCORE:

@@ -561,7 +561,7 @@ public class InGameState: GameState {
     bullets.draw();
   }
 
-  public void drawFront() {
+  public override void drawFront() {
     ship.drawFront();
     scoreReel.draw(11.5f + (SCORE_REEL_SIZE_DEFAULT - scoreReelSize) * 3,
                    -8.2f - (SCORE_REEL_SIZE_DEFAULT - scoreReelSize) * 3,
@@ -582,7 +582,7 @@ public class InGameState: GameState {
     stageManager.draw();
   }
 
-  public void drawOrtho() {
+  public override void drawOrtho() {
     drawGameParams();
     if (isGameOver)
       Letter.drawString("GAME OVER", 190, 180, 15);
@@ -731,7 +731,7 @@ public class TitleState: GameState {
     }
   }
 
-  public void drawFront() {
+  public override void drawFront() {
     if (_replayData)
       inGameState.drawFront();
   }

@@ -57,7 +57,7 @@ public class Ship {
     this.field = field;
     Boat.init();
     int i = 0;
-    foreach (inout Boat b; boat) {
+    foreach (ref Boat b; boat) {
       b = new Boat(i, this, pad, twinStick, mouse, mouseAndPad,
                    field, screen, sparks, smokes, fragments, wakes);
       i++;

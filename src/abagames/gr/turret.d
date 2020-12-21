@@ -609,7 +609,7 @@ public class TurretGroup {
               Enemy parent) {
     this.ship = ship;
     centerPos = new Vector;
-    foreach (inout Turret t; turret)
+    foreach (ref Turret t; turret)
       t = new Turret(field, bullets, ship, sparks, smokes, fragments, parent);
   }
 
@@ -767,7 +767,7 @@ public class MovingTurretGroup {
               Enemy parent) {
     this.ship = ship;
     centerPos = new Vector;
-    foreach (inout Turret t; turret)
+    foreach (ref Turret t; turret)
       t = new Turret(field, bullets, ship, sparks, smokes, fragments, parent);
     radius = radiusAmpCnt = 0;
     deg = 0;

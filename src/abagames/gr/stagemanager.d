@@ -67,7 +67,7 @@ public class StageManager {
     this.wakes = wakes;
     rand = new Rand;
     enemyApp = new EnemyAppearance[3];
-    foreach (inout EnemyAppearance ea; enemyApp)
+    foreach (ref EnemyAppearance ea; enemyApp)
       ea = new EnemyAppearance;
     PlatformEnemySpec platformEnemySpec =
       new PlatformEnemySpec(field, ship, sparks, smokes, fragments, wakes);

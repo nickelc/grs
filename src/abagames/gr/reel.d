@@ -32,7 +32,7 @@ public class ScoreReel {
   }
 
   public this() {
-    foreach (inout NumReel nr; numReel)
+    foreach (ref NumReel nr; numReel)
       nr = new NumReel;
     digit = 1;
   }
@@ -254,7 +254,7 @@ public class NumIndicator: Actor {
   public this() {
     pos = new Vector;
     vel = new Vector;
-    foreach (inout Target t; target) {
+    foreach (ref Target t; target) {
       t.pos = new Vector;
       t.initialVelRatio = 0;
       t.size = 0;

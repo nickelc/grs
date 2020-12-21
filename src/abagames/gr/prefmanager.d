@@ -63,13 +63,13 @@ public class PrefData {
   int _gameMode;
 
   public void init() {
-    foreach (inout int hs; _highScore)
+    foreach (ref int hs; _highScore)
       hs = 0;
     _gameMode = 0;
   }
 
   public void load(File fd) {
-    foreach (inout int hs; _highScore)
+    foreach (ref int hs; _highScore)
       fd.read(hs);
     fd.read(_gameMode);
   }
@@ -82,7 +82,7 @@ public class PrefData {
   }
 
   public void save(File fd) {
-    foreach (inout int hs; _highScore)
+    foreach (ref int hs; _highScore)
       fd.write(hs);
     fd.write(_gameMode);
   }

@@ -43,7 +43,7 @@ public class ActorPool(T) {
 
   protected void createActors(int n, Object[] args = null) {
     actor = new T[n];
-    foreach (inout T a; actor) {
+    foreach (ref T a; actor) {
       a = new T;
       a.exists = false;
       a.init(args);

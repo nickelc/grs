@@ -86,7 +86,7 @@ public class Field {
     _size = new Vector(SCREEN_BLOCK_SIZE_X / 2 * 0.9f, SCREEN_BLOCK_SIZE_Y / 2 * 0.8f);
     _outerSize = new Vector(SCREEN_BLOCK_SIZE_X / 2, SCREEN_BLOCK_SIZE_Y / 2);
     screenPos = new Vector;
-    foreach (inout PlatformPos pp; platformPos)
+    foreach (ref PlatformPos pp; platformPos)
       pp.pos = new Vector;
     _lastScrollY = 0;
     platformPosNum = 0;

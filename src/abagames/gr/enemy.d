@@ -232,9 +232,9 @@ public class EnemyState {
   public void setEnemyAndPool(Enemy enemy, EnemyPool enemies) {
     this.enemy = enemy;
     this.enemies = enemies;
-    foreach (inout TurretGroup tg; turretGroup)
+    foreach (ref TurretGroup tg; turretGroup)
       tg = new TurretGroup(field, bullets, ship, sparks, smokes, fragments, enemy);
-    foreach (inout MovingTurretGroup tg; movingTurretGroup)
+    foreach (ref MovingTurretGroup tg; movingTurretGroup)
       tg = new MovingTurretGroup(field, bullets, ship, sparks, smokes, fragments, enemy);
   }
 
@@ -605,9 +605,9 @@ public class EnemySpec {
     this.smokes = smokes;
     this.fragments = fragments;
     this.wakes = wakes;
-    foreach (inout TurretGroupSpec tgs; turretGroupSpec)
+    foreach (ref TurretGroupSpec tgs; turretGroupSpec)
       tgs = new TurretGroupSpec;
-    foreach (inout MovingTurretGroupSpec tgs; movingTurretGroupSpec)
+    foreach (ref MovingTurretGroupSpec tgs; movingTurretGroupSpec)
       tgs = new MovingTurretGroupSpec;
     distRatio = 0;
     shield = 1;

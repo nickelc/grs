@@ -76,7 +76,7 @@ public class Logger {
     std.cstream.derr.writeLine("Error: " ~ e.toString());
   }
 
-  public static void error(Error e) {
+  public static void error(Throwable e) {
     std.cstream.derr.writeLine("Error: " ~ e.toString());
     if (e.next)
       error(e.next);

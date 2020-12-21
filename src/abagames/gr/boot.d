@@ -61,7 +61,7 @@ version (Win32_release) {
       char[][1] prog;
       prog[0] = std.string.toString(exe);
       result = boot(prog ~ std.string.split(std.string.toString(lpCmdLine)));
-    } catch (Object o) {
+    } catch (Throwable o) {
       Logger.error("Exception: " ~ o.toString());
       result = EXIT_FAILURE;
     }
@@ -94,11 +94,11 @@ public int boot(char[][] args) {
   }
   try {
     mainLoop.loop();
-  } catch (Object o) {
+  } catch (Throwable o) {
     Logger.info(o.toString());
     try {
       gameManager.saveErrorReplay();
-    } catch (Object o1) {}
+    } catch (Throwable o1) {}
     throw o;
   }
   return EXIT_SUCCESS;
@@ -222,7 +222,7 @@ private final const char[] OPTIONS_INI_FILE = "options.ini";
 private char[][] readOptionsIniFile() {
   try {
     return Tokenizer.readFile(OPTIONS_INI_FILE, " ");
-  } catch (Object e) {
+  } catch (Throwable e) {
     return null;
   }
 }

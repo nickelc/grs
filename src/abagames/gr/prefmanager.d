@@ -35,7 +35,7 @@ public class PrefManager: abagames.util.prefmanager.PrefManager {
         throw new Error("Wrong version num");
       else
         _prefData.load(fd);
-    } catch (Object e) {
+    } catch (Throwable e) {
       _prefData.init();
     } finally {
       if (fd.isOpen())

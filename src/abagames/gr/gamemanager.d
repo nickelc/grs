@@ -202,13 +202,13 @@ public class GameManager: abagames.util.sdl.gamemanager.GameManager {
   private void saveLastReplay() {
     try {
       inGameState.saveReplay("last.rpl");
-    } catch (Object o) {}
+    } catch (Throwable o) {}
   }
 
   private void loadLastReplay() {
     try {
       inGameState.loadReplay("last.rpl");
-    } catch (Object o) {
+    } catch (Throwable o) {
       inGameState.resetReplay();
     }
   }
@@ -216,7 +216,7 @@ public class GameManager: abagames.util.sdl.gamemanager.GameManager {
   private void loadErrorReplay() {
     try {
       inGameState.loadReplay("error.rpl");
-    } catch (Object o) {
+    } catch (Throwable o) {
       inGameState.resetReplay();
     }
   }

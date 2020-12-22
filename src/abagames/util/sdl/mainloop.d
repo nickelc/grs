@@ -35,8 +35,7 @@ public class MainLoop {
   float _slowdownStartRatio = 1;
   float _slowdownMaxRatio = 1.75f;
 
-  public this(Screen screen, Input input,
-	      GameManager gameManager, PrefManager prefManager) {
+  public this(Screen screen, Input input, GameManager gameManager, PrefManager prefManager) {
     this.screen = screen;
     this.input = input;
     gameManager.setMainLoop(this);
@@ -121,7 +120,7 @@ public class MainLoop {
   }
 
   // Intentional slowdown.
-  
+
   public void initInterval() {
     interval = INTERVAL_BASE;
   }

@@ -18,7 +18,7 @@ private import std.c.windows.windows;
 
 public class Logger {
 
-  public static void info(char[] msg, bool nline = true) {
+  public static void info(string msg, bool nline = true) {
     // Win32 exe crashes if it writes something to stderr.
     /*if (nline)
       std.cstream.derr.writeLine(msg);
@@ -54,7 +54,7 @@ public class Logger {
 
 public class Logger {
 
-  public static void info(char[] msg, bool nline = true) {
+  public static void info(string msg, bool nline = true) {
     if (nline)
       std.cstream.derr.writeLine(msg);
     else
@@ -68,7 +68,7 @@ public class Logger {
       std.cstream.derr.writeString(std.string.toString(n) ~ " ");
   }
 
-  public static void error(char[] msg) {
+  public static void error(string msg) {
     std.cstream.derr.writeLine("Error: " ~ msg);
   }
 

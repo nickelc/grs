@@ -14,17 +14,17 @@ private import std.string;
 public class Tokenizer {
  private:
 
-  public static char[][] readFile(char[] fileName, char[] separator) {
-    char[][] result;
+  public static string[] readFile(string fileName, string separator) {
+    string[] result;
     auto File fd = new File;
     fd.open(fileName);
     for (;;) {
-      char[] line = fd.readLine();
+      string line = fd.readLine();
       if (!line)
         break;
-      char[][] spl = std.string.split(line, separator);
-      foreach (char[] s; spl) {
-        char[] r = strip(s);
+      string[] spl = std.string.split(line, separator);
+      foreach (string s; spl) {
+        string r = strip(s);
         if (r.length > 0)
           result ~= r;
       }
@@ -40,7 +40,7 @@ public class Tokenizer {
 public class CSVTokenizer {
  private:
 
-  public static char[][] readFile(char[] fileName) {
+  public static string[] readFile(string fileName) {
     return Tokenizer.readFile(fileName, ",");
   }
 }

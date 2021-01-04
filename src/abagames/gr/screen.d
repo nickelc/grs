@@ -18,7 +18,7 @@ private import abagames.util.sdl.luminous;
  */
 public class Screen: Screen3D {
  private:
-  const char[] CAPTION = "Gunroar";
+  const string CAPTION = "Gunroar";
   static Rand rand;
   static float lineWidthBase;
   LuminousScreen luminousScreen;

@@ -56,8 +56,8 @@ public class SoundManager {
  * Music / Chunk.
  */
 public interface Sound {
-  public void load(char[] name);
-  public void load(char[] name, int ch);
+  public void load(string name);
+  public void load(string name, int ch);
   public void free();
   public void play();
   public void fade();
@@ -67,14 +67,14 @@ public interface Sound {
 public class Music: Sound {
  public:
   static int fadeOutSpeed = 1280;
-  static char[] dir = "sounds/musics";
+  static string dir = "sounds/musics";
  private:
   Mix_Music* music;
 
-  public void load(char[] name) {
+  public void load(string name) {
     if (SoundManager.noSound)
       return;
-    char[] fileName = dir ~ "/" ~ name;
+    string fileName = dir ~ "/" ~ name;
     music = Mix_LoadMUS(std.string.toStringz(fileName));
     if (!music) {
       SoundManager.noSound = true;
@@ -83,7 +83,7 @@ public class Music: Sound {
     }
   }
 
-  public void load(char[] name, int ch) {
+  public void load(string name, int ch) {
     load(name);
   }
 
@@ -131,19 +131,19 @@ public class Music: Sound {
 
 public class Chunk: Sound {
  public:
-  static char[] dir = "sounds/chunks";
+  static string dir = "sounds/chunks";
  private:
   Mix_Chunk* chunk;
   int chunkChannel;
 
-  public void load(char[] name) {
+  public void load(string name) {
     load(name, 0);
   }
 
-  public void load(char[] name, int ch) {
+  public void load(string name, int ch) {
     if (SoundManager.noSound)
       return;
-    char[] fileName = dir ~ "/" ~ name;
+    string fileName = dir ~ "/" ~ name;
     chunk = Mix_LoadWAV(std.string.toStringz(fileName));
     if (!chunk) {
       SoundManager.noSound = true;

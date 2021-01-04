@@ -58,7 +58,7 @@ version (Win32_release) {
       _moduleCtor();
       char[4096] exe;
       GetModuleFileNameA(null, exe, 4096);
-      char[][1] prog;
+      string[1] prog;
       prog[0] = std.string.toString(exe);
       result = boot(prog ~ std.string.split(std.string.toString(lpCmdLine)));
     } catch (Throwable o) {
@@ -70,12 +70,12 @@ version (Win32_release) {
   }
 } else {
   // Boot as the general executable.
-  public int main(char[][] args) {
+  public int main(string[] args) {
     return boot(args);
   }
 }
 
-public int boot(char[][] args) {
+public int boot(string[] args) {
   screen = new Screen;
   input = new MultipleInputDevice;
   pad = new RecordablePad;
@@ -104,11 +104,11 @@ public int boot(char[][] args) {
   return EXIT_SUCCESS;
 }
 
-private void parseArgs(char[][] commandArgs) {
-  char[][] args = readOptionsIniFile();
+private void parseArgs(string[] commandArgs) {
+  string[] args = readOptionsIniFile();
   for (int i = 1; i < commandArgs.length; i++)
     args ~= commandArgs[i];
-  char[] progName = commandArgs[0];
+  string progName = commandArgs[0];
   for (int i = 0; i < args.length; i++) {
     switch (args[i]) {
     case "-brightness":
@@ -217,9 +217,9 @@ private void parseArgs(char[][] commandArgs) {
   }
 }
 
-private final const char[] OPTIONS_INI_FILE = "options.ini";
+private const string OPTIONS_INI_FILE = "options.ini";
 
-private char[][] readOptionsIniFile() {
+private string[] readOptionsIniFile() {
   try {
     return Tokenizer.readFile(OPTIONS_INI_FILE, " ");
   } catch (Throwable e) {
@@ -227,7 +227,7 @@ private char[][] readOptionsIniFile() {
   }
 }
 
-private void usage(char[] progName) {
+private void usage(string progName) {
   Logger.error
     ("Usage: " ~ progName ~ " [-window] [-res x y] [-brightness [0-100]] [-luminosity [0-100]] [-nosound] [-exchange] [-turnspeed [0-500]] [-firerear] [-rotatestick2 deg] [-reversestick2] [-enableaxis5] [-nowait]");
 }

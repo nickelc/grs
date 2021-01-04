@@ -93,7 +93,7 @@ public class Screen3D: Screen, SizableScreen {
     throw new Exception("OpenGL error(" ~ std.string.toString(error) ~ ")");
   }
 
-  protected void setCaption(char[] name) {
+  protected void setCaption(string name) {
     SDL_WM_SetCaption(std.string.toStringz(name), null);
   }
 

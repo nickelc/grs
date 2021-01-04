@@ -18,7 +18,7 @@ private import abagames.gr.mouseandpad;
  */
 public class ReplayData {
  public:
-  static const char[] dir = "replay";
+  static const string dir = "replay";
   static const int VERSION_NUM = 11;
   InputRecord!(PadState) padInputRecord;
   InputRecord!(TwinStickState) twinStickInputRecord;
@@ -30,7 +30,7 @@ public class ReplayData {
   int gameMode;
  private:
 
-  public void save(char[] fileName) {
+  public void save(string fileName) {
     auto File fd = new File;
     fd.create(dir ~ "/" ~ fileName);
     fd.write(VERSION_NUM);
@@ -57,7 +57,7 @@ public class ReplayData {
     fd.close();
   }
 
-  public void load(char[] fileName) {
+  public void load(string fileName) {
     auto File fd = new File;
     fd.open(dir ~ "/" ~ fileName);
     int ver;

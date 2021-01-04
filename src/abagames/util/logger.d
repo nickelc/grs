@@ -5,6 +5,7 @@
  */
 module abagames.util.logger;
 
+private import std.conv;
 private import std.cstream;
 private import std.string;
 
@@ -63,9 +64,9 @@ public class Logger {
 
   public static void info(double n, bool nline = true) {
     if (nline)
-      std.cstream.derr.writeLine(std.string.toString(n));
+      std.cstream.derr.writeLine(std.conv.to!string(n));
     else
-      std.cstream.derr.writeString(std.string.toString(n) ~ " ");
+      std.cstream.derr.writeString(std.conv.to!string(n) ~ " ");
   }
 
   public static void error(string msg) {

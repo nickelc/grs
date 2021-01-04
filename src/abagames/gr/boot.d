@@ -5,6 +5,7 @@
  */
 module abagames.gr.boot;
 
+private import std.conv;
 private import std.string;
 private import std.stream;
 private import std.math;
@@ -60,7 +61,7 @@ version (Win32_release) {
       GetModuleFileNameA(null, exe, 4096);
       string[1] prog;
       prog[0] = std.string.toString(exe);
-      result = boot(prog ~ std.string.split(std.string.toString(lpCmdLine)));
+      result = boot(prog ~ std.string.split(std.conv.to!string(lpCmdLine)));
     } catch (Throwable o) {
       Logger.error("Exception: " ~ o.toString());
       result = EXIT_FAILURE;
@@ -117,7 +118,7 @@ private void parseArgs(string[] commandArgs) {
         throw new Exception("Invalid options");
       }
       i++;
-      float b = cast(float) std.string.atoi(args[i]) / 100;
+      float b = cast(float) std.conv.parse!int(args[i]) / 100;
       if (b < 0 || b > 1) {
         usage(args[0]);
         throw new Exception("Invalid options");
@@ -131,7 +132,7 @@ private void parseArgs(string[] commandArgs) {
         throw new Exception("Invalid options");
       }
       i++;
-      float l = cast(float) std.string.atoi(args[i]) / 100;
+      float l = cast(float) std.conv.parse!int(args[i]) / 100;
       if (l < 0 || l > 1) {
         usage(progName);
         throw new Exception("Invalid options");
@@ -147,9 +148,9 @@ private void parseArgs(string[] commandArgs) {
         throw new Exception("Invalid options");
       }
       i++;
-      int w = std.string.atoi(args[i]);
+      int w = std.conv.parse!int(args[i]);
       i++;
-      int h = std.string.atoi(args[i]);
+      int h = std.conv.parse!int(args[i]);
       screen.width = w;
       screen.height = h;
       break;
@@ -171,7 +172,7 @@ private void parseArgs(string[] commandArgs) {
         throw new Exception("Invalid options");
       }
       i++;
-      float s = cast(float) std.string.atoi(args[i]) / 100;
+      float s = cast(float) std.conv.parse!int(args[i]) / 100;
       if (s < 0 || s > 5) {
         usage(progName);
         throw new Exception("Invalid options");
@@ -188,7 +189,7 @@ private void parseArgs(string[] commandArgs) {
         throw new Exception("Invalid options");
       }
       i++;
-      twinStick.rotate = cast(float) std.string.atoi(args[i]) * PI / 180.0f;
+      twinStick.rotate = cast(float) std.conv.parse!int(args[i]) * PI / 180.0f;
       break;
     case "-reversestick2":
     case "-reverserightstick":
@@ -203,7 +204,7 @@ private void parseArgs(string[] commandArgs) {
         throw new Exception("Invalid options");
       }
       i++;
-      float s = cast(float) std.string.atoi(args[i]) / 100;
+      float s = cast(float) std.conv.parse!int(args[i]) / 100;
       if (s < 0 || s > 5) {
         usage(progName);
         throw new Exception("Invalid options");

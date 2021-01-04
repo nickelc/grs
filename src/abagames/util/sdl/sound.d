@@ -5,6 +5,7 @@
  */
 module abagames.util.sdl.sound;
 
+private import std.conv;
 private import std.string;
 private import SDL;
 private import SDL_mixer;
@@ -28,7 +29,7 @@ public class SoundManager {
     if (SDL_InitSubSystem(SDL_INIT_AUDIO) < 0) {
       noSound = true;
       throw new SDLInitFailedException
-        ("Unable to initialize SDL_AUDIO: " ~ std.string.toString(SDL_GetError()));
+        ("Unable to initialize SDL_AUDIO: " ~ std.conv.to!string(SDL_GetError()));
     }
     audio_rate = 44100;
     audio_format = AUDIO_S16;
@@ -37,7 +38,7 @@ public class SoundManager {
     if (Mix_OpenAudio(audio_rate, audio_format, audio_channels, audio_buffers) < 0) {
       noSound = true;
       throw new SDLInitFailedException
-        ("Couldn't open audio: " ~ std.string.toString(SDL_GetError()));
+        ("Couldn't open audio: " ~ std.conv.to!string(SDL_GetError()));
     }
     Mix_QuerySpec(&audio_rate, &audio_format, &audio_channels);
   }
@@ -79,7 +80,7 @@ public class Music: Sound {
     if (!music) {
       SoundManager.noSound = true;
       throw new SDLException("Couldn't load: " ~ fileName ~
-                             " (" ~ std.string.toString(Mix_GetError()) ~ ")");
+                             " (" ~ std.conv.to!string(Mix_GetError()) ~ ")");
     }
   }
 
@@ -148,7 +149,7 @@ public class Chunk: Sound {
     if (!chunk) {
       SoundManager.noSound = true;
       throw new SDLException("Couldn't load: " ~ fileName ~
-                             " (" ~ std.string.toString(Mix_GetError()) ~ ")");
+                             " (" ~ std.conv.to!string(Mix_GetError()) ~ ")");
     }
     chunkChannel = ch;
   }

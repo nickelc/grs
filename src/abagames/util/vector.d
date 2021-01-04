@@ -5,6 +5,7 @@
  */
 module abagames.util.vector;
 
+private import std.conv;
 private import std.math;
 private import std.string;
 
@@ -202,7 +203,7 @@ public class Vector {
   }
 
   public override string toString() {
-    return "(" ~ std.string.toString(x) ~ ", " ~ std.string.toString(y) ~ ")";
+    return "(" ~ std.conv.to!string(x) ~ ", " ~ std.conv.to!string(y) ~ ")";
   }
 }
 

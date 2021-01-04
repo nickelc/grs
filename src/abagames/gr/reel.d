@@ -214,7 +214,7 @@ public class NumIndicator: Actor {
     assert(vel.x < 10 && vel.x > -10);
     assert(vel.y < 10 && vel.y > -10);
     assert(alpha >= 0 && alpha <= 1);
-    foreach (Target t; target) {
+    foreach (const(Target) t; target) {
       assert(t.pos.x < 15 && t.pos.x > -15);
       assert(t.pos.y < 20 && t.pos.y > -20);
       assert(t.initialVelRatio >= 0);

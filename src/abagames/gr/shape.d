@@ -46,11 +46,11 @@ public class BaseShape: DrawableShape {
     assert(r >= 0 && r <= 1);
     assert(g >= 0 && g <= 1);
     assert(b >= 0 && b <= 1);
-    foreach (Vector p; pillarPos) {
+    foreach (const(Vector) p; pillarPos) {
       assert(p.x < 20 && p.x > -20);
       assert(p.y < 20 && p.x > -20);
     }
-    foreach (Vector p; _pointPos) {
+    foreach (const(Vector) p; _pointPos) {
       assert(p.x < 20 && p.x > -20);
       assert(p.y < 20 && p.x > -20);
     }

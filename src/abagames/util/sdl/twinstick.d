@@ -5,8 +5,8 @@
  */
 module abagames.util.sdl.twinstick;
 
+private import std.stdio;
 private import std.string;
-private import std.stream;
 private import std.math;
 private import SDL;
 private import abagames.util.vector;
@@ -152,18 +152,18 @@ public class TwinStickState {
     left.x = left.y = right.x = right.y = 0;
   }
 
-  public void read(File fd) {
-    fd.read(left.x);
-    fd.read(left.y);
-    fd.read(right.x);
-    fd.read(right.y);
+  public void read(File* fd) {
+    fd.readf!"%f"(left.x);
+    fd.readf!"%f"(left.y);
+    fd.readf!"%f"(right.x);
+    fd.readf!"%f"(right.y);
   }
 
-  public void write(File fd) {
-    fd.write(left.x);
-    fd.write(left.y);
-    fd.write(right.x);
-    fd.write(right.y);
+  public void write(File* fd) {
+    fd.writef!"%f"(left.x);
+    fd.writef!"%f"(left.y);
+    fd.writef!"%f"(right.x);
+    fd.writef!"%f"(right.y);
   }
 
   public bool equals(TwinStickState s) {

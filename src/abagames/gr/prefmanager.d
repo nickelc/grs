@@ -5,7 +5,7 @@
  */
 module abagames.gr.prefmanager;
 
-private import std.stream;
+private import std.stdio;
 private import abagames.util.prefmanager;
 private import abagames.gr.gamemanager;
 
@@ -24,11 +24,10 @@ public class PrefManager: abagames.util.prefmanager.PrefManager {
   }
 
   public void load() {
-    auto File fd = new File;
     try {
+      auto fd = new File(PREF_FILE, "rb");
       int ver;
-      fd.open(PREF_FILE);
-      fd.read(ver);
+      fd.readf!"%d"(ver);
       if (ver == VERSION_NUM_13)
         _prefData.loadVer13(fd);
       else if (ver != VERSION_NUM)
@@ -37,16 +36,12 @@ public class PrefManager: abagames.util.prefmanager.PrefManager {
         _prefData.load(fd);
     } catch (Throwable e) {
       _prefData.init();
-    } finally {
-      if (fd.isOpen())
-        fd.close();
     }
   }
 
   public void save() {
-    auto File fd = new File;
-    fd.create(PREF_FILE);
-    fd.write(VERSION_NUM);
+    auto fd = new File(PREF_FILE, "wb");
+    fd.writef!"%d"(VERSION_NUM);
     _prefData.save(fd);
     fd.close();
   }
@@ -68,23 +63,23 @@ public class PrefData {
     _gameMode = 0;
   }
 
-  public void load(File fd) {
+  public void load(File* fd) {
     foreach (ref int hs; _highScore)
-      fd.read(hs);
-    fd.read(_gameMode);
+      fd.readf!"%d"(hs);
+    fd.readf!"%d"(_gameMode);
   }
 
-  public void loadVer13(File fd) {
+  public void loadVer13(File* fd) {
     init();
     for (int i = 0; i < 3; i++)
-      fd.read(_highScore[i]);
-    fd.read(_gameMode);
+      fd.readf!"%d"(_highScore[i]);
+    fd.readf!"%d"(_gameMode);
   }
 
-  public void save(File fd) {
+  public void save(File* fd) {
     foreach (ref int hs; _highScore)
-      fd.write(hs);
-    fd.write(_gameMode);
+      fd.writef!"%d"(hs);
+    fd.writef!"%d"(_gameMode);
   }
 
   public void recordGameMode(int gm) {

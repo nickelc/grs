@@ -7,7 +7,6 @@ module abagames.gr.boot;
 
 private import std.conv;
 private import std.string;
-private import std.stream;
 private import std.math;
 private import std.c.stdlib;
 private import abagames.util.logger;

@@ -5,7 +5,7 @@
  */
 module abagames.util.sdl.recordableinput;
 
-private import std.stream;
+private import std.stdio;
 private import abagames.util.iterator;
 
 /**
@@ -97,21 +97,21 @@ public class InputRecord(T) {
     return replayData;
   }
 
-  public void save(File fd) {
-    fd.write(record.length);
+  public void save(File* fd) {
+    fd.writef!"%d"(record.length);
     foreach (Record r; record) {
-      fd.write(r.series);
+      fd.writef!"%d"(r.series);
       r.data.write(fd);
     }
   }
 
-  public void load(File fd) {
+  public void load(File* fd) {
     clear();
     int l, s;
     T d;
-    fd.read(l);
+    fd.readf!"%d"(l);
     for (int i = 0; i < l; i++) {
-      fd.read(s);
+      fd.readf!"%d"(s);
       d = T.newInstance();
       d.read(fd);
       Record r;

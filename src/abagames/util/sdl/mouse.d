@@ -5,8 +5,8 @@
  */
 module abagames.util.sdl.mouse;
 
+private import std.stdio;
 private import std.string;
-private import std.stream;
 private import SDL;
 private import abagames.util.sdl.input;
 private import abagames.util.sdl.recordableinput;
@@ -108,16 +108,16 @@ public class MouseState {
     button = 0;
   }
 
-  public void read(File fd) {
-    fd.read(x);
-    fd.read(y);
-    fd.read(button);
+  public void read(File* fd) {
+    fd.readf!"%f"(x);
+    fd.readf!"%f"(y);
+    fd.readf!"%d"(button);
   }
 
-  public void write(File fd) {
-    fd.write(x);
-    fd.write(y);
-    fd.write(button);
+  public void write(File* fd) {
+    fd.writef!"%f"(x);
+    fd.writef!"%f"(y);
+    fd.writef!"%d"(button);
   }
 
   public bool equals(MouseState s) {

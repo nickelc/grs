@@ -5,7 +5,7 @@
  */
 module abagames.gr.replay;
 
-private import std.stream;
+private import std.stdio;
 private import abagames.util.sdl.recordableinput;
 private import abagames.util.sdl.pad;
 private import abagames.util.sdl.twinstick;
@@ -31,17 +31,16 @@ public class ReplayData {
  private:
 
   public void save(string fileName) {
-    auto File fd = new File;
-    fd.create(dir ~ "/" ~ fileName);
-    fd.write(VERSION_NUM);
-    fd.write(seed);
-    fd.write(score);
-    fd.write(shipTurnSpeed);
+    auto fd = new File(dir ~ "/" ~ fileName, "wb");
+    fd.writef!"%d"(VERSION_NUM);
+    fd.writef!"%d"(seed);
+    fd.writef!"%d"(score);
+    fd.writef!"%f"(shipTurnSpeed);
     if (shipReverseFire)
-      fd.write(1);
+      fd.writef!"%d"(1);
     else
-      fd.write(0);
-    fd.write(gameMode);
+      fd.writef!"%d"(0);
+    fd.writef!"%d"(gameMode);
     switch (gameMode) {
     case InGameState.GameMode.NORMAL:
       padInputRecord.save(fd);
@@ -58,22 +57,21 @@ public class ReplayData {
   }
 
   public void load(string fileName) {
-    auto File fd = new File;
-    fd.open(dir ~ "/" ~ fileName);
+    auto fd = new File(dir ~ "/" ~ fileName);
     int ver;
-    fd.read(ver);
+    fd.readf!"%d"(ver);
     if (ver != VERSION_NUM)
       throw new Error("Wrong version num");
-    fd.read(seed);
-    fd.read(score);
-    fd.read(shipTurnSpeed);
+    fd.readf!"%d"(seed);
+    fd.readf!"%d"(score);
+    fd.readf!"%f"(shipTurnSpeed);
     int srf;
-    fd.read(srf);
+    fd.readf!"%d"(srf);
     if (srf == 1)
       shipReverseFire = true;
     else
       shipReverseFire = false;
-    fd.read(gameMode);
+    fd.readf!"%d"(gameMode);
     switch (gameMode) {
     case InGameState.GameMode.NORMAL:
       padInputRecord = new InputRecord!(PadState);

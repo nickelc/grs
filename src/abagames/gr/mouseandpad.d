@@ -5,8 +5,8 @@
  */
 module abagames.gr.mouseandpad;
 
+private import std.stdio;
 private import std.string;
-private import std.stream;
 private import SDL;
 private import abagames.util.sdl.input;
 private import abagames.util.sdl.recordableinput;
@@ -50,12 +50,12 @@ public class MouseAndPadState {
     padState.clear();
   }
 
-  public void read(File fd) {
+  public void read(File* fd) {
     mouseState.read(fd);
     padState.read(fd);
   }
 
-  public void write(File fd) {
+  public void write(File* fd) {
     mouseState.write(fd);
     padState.write(fd);
   }

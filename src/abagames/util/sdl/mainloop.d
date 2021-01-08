@@ -92,11 +92,11 @@ public class MainLoop {
       frame = cast(int) (nowTick - prvTickCount) / itv;
       if (frame <= 0) {
         frame = 1;
-        SDL_Delay(prvTickCount + itv - nowTick);
+        SDL_Delay(cast(int)(prvTickCount + itv - nowTick));
         if (accframe) {
           prvTickCount = SDL_GetTicks();
         } else {
-          prvTickCount += interval;
+          prvTickCount = cast(long) (prvTickCount + interval);
         }
       } else if (frame > maxSkipFrame) {
         frame = maxSkipFrame;

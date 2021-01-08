@@ -60,7 +60,7 @@ public class TwinStick: Input {
         state.right.x = state.right.y = 0;
       } else {
         ry = -ry;
-        float rd = atan2(rx, ry) * reverse + rotate;
+        float rd = atan2(cast(float) rx, cast(float) ry) * reverse + rotate;
         assert(rd != 0);
         float rl = sqrt(cast(float) rx * rx + cast(float) ry * ry);
         assert(rl != 0);

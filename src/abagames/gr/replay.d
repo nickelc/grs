@@ -41,7 +41,7 @@ public class ReplayData {
     else
       fd.writef!"%d"(0);
     fd.writef!"%d"(gameMode);
-    switch (gameMode) {
+    final switch (gameMode) {
     case InGameState.GameMode.NORMAL:
       padInputRecord.save(fd);
       break;
@@ -72,7 +72,7 @@ public class ReplayData {
     else
       shipReverseFire = false;
     fd.readf!"%d"(gameMode);
-    switch (gameMode) {
+    final switch (gameMode) {
     case InGameState.GameMode.NORMAL:
       padInputRecord = new InputRecord!(PadState);
       padInputRecord.load(fd);

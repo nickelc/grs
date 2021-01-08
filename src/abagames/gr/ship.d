@@ -379,7 +379,7 @@ public class Boat {
     firePos = new Vector;
     _vel = new Vector;
     refVel = new Vector;
-    switch (idx) {
+    final switch (idx) {
     case 0:
       _shape = new BaseShape(0.7f, 0.6f, 0.6f, BaseShape.ShapeType.SHIP_ROUNDTAIL, 0.5f, 0.7f, 0.5f);
       bridgeShape = new BaseShape(0.3f, 0.6f, 0.6f, BaseShape.ShapeType.BRIDGE, 0.3f, 0.7f, 0.3f);
@@ -425,7 +425,7 @@ public class Boat {
   public void start(int gameMode) {
     this.gameMode = gameMode;
     if (gameMode == InGameState.GameMode.DOUBLE_PLAY) {
-      switch (idx) {
+      final switch (idx) {
       case 0:
         _pos.x = -field.size.x * 0.5f;
         break;
@@ -450,7 +450,7 @@ public class Boat {
   }
 
   public void restart() {
-    switch (gameMode) {
+    final switch (gameMode) {
     case InGameState.GameMode.NORMAL:
       fireCnt = 99999;
       fireInterval = 99999;
@@ -477,7 +477,7 @@ public class Boat {
     float px = _pos.x, py = _pos.y;
     cnt++;
     vx = vy = 0;
-    switch (gameMode) {
+    final switch (gameMode) {
     case InGameState.GameMode.NORMAL:
       moveNormal();
       break;
@@ -534,10 +534,11 @@ public class Boat {
             destroyed();
           }
         }
+      }
     } else {
       onBlock = false;
     }
-    switch (gameMode) {
+    final switch (gameMode) {
     case InGameState.GameMode.NORMAL:
       fireNormal();
       break;
@@ -645,7 +646,7 @@ public class Boat {
   }
 
   private void moveDoublePlay() {
-    switch (idx) {
+    final switch (idx) {
     case 0:
       if (!_replayMode) {
         stickInput = twinStick.getState();
@@ -749,7 +750,7 @@ public class Boat {
         s.set(firePos, fireDeg);
       fireCnt = cast(int) fireInterval;
       float td;
-      switch (foc) {
+      final switch (foc) {
       case -1:
         td = fireSprDeg * (fireSprCnt / 2 % 4 + 1) * 0.2f;
         break;
@@ -808,7 +809,7 @@ public class Boat {
         firePos.y = _pos.y - sin(fireDeg + PI) * 0.2f * foc;
         fireCnt = cast(int) fireInterval;
         float td;
-        switch (foc) {
+        final switch (foc) {
         case -1:
           td = fireSprDeg * (fireSprCnt / 2 % 4 + 1) * 0.2f;
           break;
@@ -864,7 +865,7 @@ public class Boat {
       if (idx == 0) {
         float fd = ship.degAmongBoats() + PI / 2;
         float td;
-        switch (foc) {
+        final switch (foc) {
         case -1:
           td = fireSprDeg * (fireSprCnt / 2 % 4 + 1) * 0.15f;
           break;
@@ -911,7 +912,7 @@ public class Boat {
         firePos.y = _pos.y - sin(fireDeg + PI) * 0.2f * foc;
         fireCnt = cast(int) fireInterval;
         float td;
-        switch (foc) {
+        final switch (foc) {
         case -1:
           td = fireSprDeg * (fireSprCnt / 2 % 4 + 1) * 0.2f;
           break;

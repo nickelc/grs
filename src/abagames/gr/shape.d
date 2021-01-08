@@ -100,7 +100,7 @@ public class BaseShape: DrawableShape {
       createLoop(sz, z, true);
       glEnd();
     }
-    switch (type) {
+    final switch (type) {
     case ShapeType.SHIP:
     case ShapeType.SHIP_ROUNDTAIL:
     case ShapeType.SHIP_SHADOW:

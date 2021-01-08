@@ -310,7 +310,7 @@ public class NumIndicator: Actor {
       exists = false;
       return;
     }
-    switch (target[targetIdx].flyingTo) {
+    final switch (target[targetIdx].flyingTo) {
     case FlyingToType.RIGHT:
       vel.x = -0.3f + rand.nextSignedFloat(0.05f);
       vel.y = rand.nextSignedFloat(0.1f);
@@ -329,7 +329,7 @@ public class NumIndicator: Actor {
     if (targetIdx < 0)
       return;
     Vector tp = target[targetIdx].pos;
-    switch (target[targetIdx].flyingTo) {
+    final switch (target[targetIdx].flyingTo) {
     case FlyingToType.RIGHT:
       vel.x += (tp.x - pos.x) * 0.0036f;
       pos.y += (tp.y - pos.y) * 0.1f;
@@ -351,7 +351,7 @@ public class NumIndicator: Actor {
       n = target[targetIdx].n;
     else
       n += vn;
-    switch (target[targetIdx].flyingTo) {
+    final switch (target[targetIdx].flyingTo) {
     case FlyingToType.RIGHT:
       if (pos.x > tp.x) {
         pos.x = tp.x;
@@ -372,7 +372,7 @@ public class NumIndicator: Actor {
 
   public override void draw() {
     Screen.setColor(alpha, alpha, alpha);
-    switch (type) {
+    final switch (type) {
     case IndicatorType.SCORE:
       Letter.drawNumSign(n, pos.x, pos.y, size, Letter.LINE_COLOR);
       break;

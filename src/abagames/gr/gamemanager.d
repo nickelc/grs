@@ -416,7 +416,7 @@ public class InGameState: GameState {
     ship.unsetReplayMode();
     _replayData = new ReplayData;
     prefManager.prefData.recordGameMode(_gameMode);
-    switch (_gameMode) {
+    final switch (_gameMode) {
     case GameMode.NORMAL:
       RecordablePad rp = cast(RecordablePad) pad;
       rp.startRecord();
@@ -692,7 +692,7 @@ public class TitleState: GameState {
 
   private void startReplay() {
     ship.setReplayMode(_replayData.shipTurnSpeed, _replayData.shipReverseFire);
-    switch (_replayData.gameMode) {
+    final switch (_replayData.gameMode) {
     case InGameState.GameMode.NORMAL:
       RecordablePad rp = cast(RecordablePad) pad;
       rp.startReplay(_replayData.padInputRecord);

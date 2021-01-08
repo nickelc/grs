@@ -205,7 +205,7 @@ public class Smoke: LuminousActor {
     type = t;
     startCnt = cnt = c;
     size = sz;
-    switch (type) {
+    final switch (type) {
     case SmokeType.FIRE:
       r = rand.nextFloat(0.1f) + 0.9f;
       g = rand.nextFloat(0.2f) + 0.2f;
@@ -265,7 +265,7 @@ public class Smoke: LuminousActor {
     }
     pos += vel;
     pos.y -= field.lastScrollY;
-    switch (type) {
+    final switch (type) {
     case SmokeType.FIRE:
     case SmokeType.EXPLOSION:
     case SmokeType.SMOKE:

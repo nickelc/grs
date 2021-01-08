@@ -286,7 +286,7 @@ public class Turret {
       f.set(pos, rand.nextSignedFloat(0.25f), rand.nextSignedFloat(0.25f), 0.05f + rand.nextFloat(0.05f),
             spec.size * (0.5f + rand.nextFloat(0.5f)));
     }
-    switch (spec.type) {
+    final switch (spec.type) {
     case TurretSpec.TurretType.MAIN:
       parent.increaseMultiplier(2);
       parent.addScore(40);
@@ -463,7 +463,7 @@ public class TurretSpec {
       break;
     }
     burstInterval = 6 + rand.nextInt(8);
-    switch (type) {
+    final switch (type) {
     case TurretType.MAIN:
       size = 0.42f + rand.nextFloat(0.05f);
       float br = (rk * 0.3f) * (1 + rand.nextSignedFloat(0.2f));
@@ -625,7 +625,7 @@ public class TurretGroup {
     centerPos.x = p.x;
     centerPos.y = p.y;
     float d, md, y, my;
-    switch (spec.alignType) {
+    final switch (spec.alignType) {
     case TurretGroupSpec.AlignType.ROUND:
       d = spec.alignDeg;
       if (spec.num > 1) {
@@ -642,7 +642,7 @@ public class TurretGroup {
     }
     for (int i = 0; i < spec.num; i++) {
       float tbx, tby;
-      switch (spec.alignType) {
+      final switch (spec.alignType) {
       case TurretGroupSpec.AlignType.ROUND:
         tbx = sin(d) * spec.radius;
         tby = cos(d) * spec.radius;

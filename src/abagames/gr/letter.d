@@ -108,7 +108,7 @@ public class Letter {
     float x = lx;
     int idx;
     float ld;
-    switch (d) {
+    final switch (d) {
     case Direction.TO_RIGHT:
       ld = 0;
       break;
@@ -132,7 +132,7 @@ public class Letter {
           drawLetter(idx, x, y, s, ld, cl);
       }
       if (od == 0) {
-        switch(d) {
+        final switch(d) {
         case Direction.TO_RIGHT:
           x += s * LETTER_WIDTH;
           break;

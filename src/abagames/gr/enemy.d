@@ -262,7 +262,7 @@ public class EnemyState {
                                int appType = AppearanceType.TOP) {
     this.appType = appType;
     for (int i = 0 ; i < 8 ; i++) {
-      switch (appType) {
+      final switch (appType) {
       case AppearanceType.TOP:
         pos.x = rand.nextSignedFloat(field.size.x);
         pos.y = field.outerSize.y * 0.99f + spec.size;
@@ -644,7 +644,7 @@ public class EnemySpec {
     float br = rank / mtn;
     int type;
     if (!bossMode) {
-      switch (rand.nextInt(4)) {
+      final switch (rand.nextInt(4)) {
       case 0:
       case 1:
         type = MovingTurretGroupSpec.MoveType.ROLL;
@@ -663,7 +663,7 @@ public class EnemySpec {
     float radInc = 0.5f + rand.nextFloat(0.25f);
     float ad = PI * 2;
     float a, av, dv, s, sv;
-    switch (type) {
+    final switch (type) {
     case MovingTurretGroupSpec.MoveType.ROLL:
       a = 0.01f + rand.nextFloat(0.04f);
       av = 0.01f + rand.nextFloat(0.03f);
@@ -688,7 +688,7 @@ public class EnemySpec {
       tgs.moveType = type;
       tgs.radiusBase = rad;
       float sr;
-      switch (type) {
+      final switch (type) {
       case MovingTurretGroupSpec.MoveType.ROLL:
         tgs.alignDeg = ad;
         tgs.num = 4 + rand.nextInt(6);
@@ -846,7 +846,7 @@ public class SmallShipEnemySpec: EnemySpec, HasAppearType {
     float sr = rand.nextFloat(rank * 0.8f);
     if (sr > 25)
       sr = 25;
-    switch (type) {
+    final switch (type) {
     case MoveType.STOPANDGO:
       distRatio = 0.5f;
       size = 0.47f + rand.nextFloat(0.1f);
@@ -872,7 +872,7 @@ public class SmallShipEnemySpec: EnemySpec, HasAppearType {
     es.setSpec(this);
     if (!es.setAppearancePos(field, ship, rand, appType))
       return false;
-    switch (type) {
+    final switch (type) {
     case MoveType.STOPANDGO:
       es.speed = 0;
       es.state = MoveState.MOVING;
@@ -888,7 +888,7 @@ public class SmallShipEnemySpec: EnemySpec, HasAppearType {
   public override bool move(EnemyState es) {
     if (!super.move(es))
       return false;
-    switch (type) {
+    final switch (type) {
     case MoveType.STOPANDGO:
       es.pos.x += sin(es.velDeg) * es.speed;
       es.pos.y += cos(es.velDeg) * es.speed;
@@ -900,7 +900,7 @@ public class SmallShipEnemySpec: EnemySpec, HasAppearType {
         es.pos.x += sin(es.velDeg) * es.speed * 2;
         es.pos.y += cos(es.velDeg) * es.speed * 2;
       }
-      switch (es.state) {
+      final switch (es.state) {
       case MoveState.MOVING:
         es.speed += (maxSpeed - es.speed) * accel;
         es.cnt--;
@@ -1002,7 +1002,7 @@ public class ShipEnemySpec: EnemySpec, HasAppearType {
     int mainTurretNum = 0, subTurretNum = 0;
     float movingTurretRatio = 0;
     float rk = rank;
-    switch (cls) {
+    final switch (cls) {
     case ShipClass.MIDDLE:
       float sz = 1.5f + rank / 15 + rand.nextFloat(rank / 15);
       float ms = 2 + rand.nextFloat(0.5f);
@@ -1011,7 +1011,7 @@ public class ShipEnemySpec: EnemySpec, HasAppearType {
       size = sz;
       speed = 0.015f + rand.nextSignedFloat(0.005f);
       degVel = 0.005f + rand.nextSignedFloat(0.003f);
-      switch (rand.nextInt(3)) {
+      final switch (rand.nextInt(3)) {
       case 0:
         mainTurretNum = cast(int) (size * (1 + rand.nextSignedFloat(0.25f)) + 1);
         break;
@@ -1252,7 +1252,7 @@ public class ShipEnemySpec: EnemySpec, HasAppearType {
   }
 
   public override int score() {
-    switch (shipClass) {
+    final switch (shipClass) {
     case ShipClass.MIDDLE:
       return 100;
     case ShipClass.LARGE:
@@ -1294,7 +1294,7 @@ public class PlatformEnemySpec: EnemySpec {
     int mainTurretNum = 0, frontTurretNum = 0, sideTurretNum = 0;
     float rk = rank;
     float movingTurretRatio = 0;
-    switch (rand.nextInt(3)) {
+    final switch (rand.nextInt(3)) {
     case 0:
       frontTurretNum = cast(int) (size * (2 + rand.nextSignedFloat(0.5f)) + 1);
       movingTurretRatio = 0.33f + rand.nextFloat(0.46f);

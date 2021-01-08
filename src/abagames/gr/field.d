@@ -199,6 +199,8 @@ public class Field {
           case 4:
             b = 2;
             break;
+          default:
+            break;
           }
         } else {
           switch (c) {
@@ -210,6 +212,8 @@ public class Field {
           case 3:
           case 4:
             b = -1;
+            break;
+          default:
             break;
           }
         }
@@ -243,7 +247,7 @@ public class Field {
 
   private void addGround(int type) {
     int cx;
-    switch (type) {
+    final switch (type) {
     case 0:
       cx = rand.nextInt(cast(int) (BLOCK_SIZE_X * 0.4f)) + cast(int) (BLOCK_SIZE_X * 0.1f);
       break;

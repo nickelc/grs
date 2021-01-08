@@ -177,13 +177,13 @@ public class NumReel {
  * Flying indicator that shows the score and the multiplier.
  */
 public class NumIndicator: Actor {
- private:
   static enum IndicatorType {
     SCORE, MULTIPLIER,
   };
   static enum FlyingToType {
     RIGHT, BOTTOM,
   };
+ private:
   static Rand rand;
   static const float TARGET_Y_MIN = -7;
   static const float TARGET_Y_MAX = 7;

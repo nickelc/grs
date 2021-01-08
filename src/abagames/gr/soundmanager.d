@@ -45,11 +45,13 @@ public class SoundManager: abagames.util.sdl.sound.SoundManager {
   }
 
   private static void loadMusics() {
-    string[] files = listdir(Music.dir);
+    import std.algorithm;
+
+    auto files = dirEntries(Music.dir, "*.{ogg,wav}", SpanMode.depth)
+      .filter!(e => e.isFile)
+      .map!(e => baseName(e.name));
+
     foreach (string fileName; files) {
-      string ext = getExt(fileName);
-      if (ext != "ogg" && ext != "wav")
-        continue;
       Music music = new Music();
       music.load(fileName);
       bgm[fileName] = music;

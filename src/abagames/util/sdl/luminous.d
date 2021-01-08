@@ -5,6 +5,7 @@
  */
 module abagames.util.sdl.luminous;
 
+private import core.stdc.string;
 private import std.math;
 private import std.string;
 private import opengl;

@@ -5,10 +5,10 @@
  */
 module abagames.gr.boot;
 
+private import core.stdc.stdlib;
 private import std.conv;
 private import std.string;
 private import std.math;
-private import std.c.stdlib;
 private import abagames.util.logger;
 private import abagames.util.tokenizer;
 private import abagames.util.sdl.mainloop;

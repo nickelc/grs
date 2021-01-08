@@ -6,7 +6,6 @@
 module abagames.gr.bullet;
 
 private import std.math;
-private import std.c.stdarg;
 private import opengl;
 private import abagames.util.actor;
 private import abagames.util.vector;

@@ -34,14 +34,14 @@ public class Field {
   static const float SIDEWALL_X1 = 18;
   static const float SIDEWALL_X2 = 9.3f;
   static const float SIDEWALL_Y = 15;
-  static const float TIME_COLOR_INDEX = 5;
+  static const size_t TIME_COLOR_INDEX = 5;
   static const float TIME_CHANGE_RATIO = 0.00033f;
   StageManager stageManager;
   Ship ship;
   Rand rand;
   Vector _size, _outerSize;
-  const int SCREEN_BLOCK_SIZE_X = 20;
-  const int SCREEN_BLOCK_SIZE_Y = 24;
+  const size_t SCREEN_BLOCK_SIZE_X = 20;
+  const size_t SCREEN_BLOCK_SIZE_Y = 24;
   const float BLOCK_WIDTH = 1;
   int[BLOCK_SIZE_Y][BLOCK_SIZE_X] block;
   struct Panel {

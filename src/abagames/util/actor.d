@@ -32,7 +32,7 @@ public class ActorPool(T) {
  public:
   T[] actor;
  protected:
-  int actorIdx = 0;
+  size_t actorIdx = 0;
  private:
 
   public this() {}

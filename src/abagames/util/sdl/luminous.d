@@ -33,7 +33,7 @@ public class LuminousScreen {
   }
 
   private void makeLuminousTexture() {
-    uint *data = td;
+    uint *data = &td[0];
     int i;
     memset(data, 0, luminousTextureWidth * luminousTextureHeight * 4 * uint.sizeof);
     glGenTextures(1, &luminousTexture);

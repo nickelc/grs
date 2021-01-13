@@ -6,7 +6,7 @@
 module abagames.gr.letter;
 
 private import std.math;
-private import opengl;
+private import bindbc.opengl;
 private import abagames.util.sdl.displaylist;
 private import abagames.gr.screen;
 

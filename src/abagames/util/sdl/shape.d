@@ -5,7 +5,7 @@
  */
 module abagames.util.sdl.shape;
 
-private import opengl;
+private import bindbc.opengl;
 private import abagames.util.vector;
 private import abagames.util.sdl.displaylist;
 

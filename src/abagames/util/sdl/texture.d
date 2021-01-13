@@ -6,7 +6,7 @@
 module abagames.util.sdl.texture;
 
 private import std.string;
-private import opengl;
+private import bindbc.opengl;
 private import openglu;
 private import bindbc.sdl;
 private import abagames.util.sdl.sdlexception;

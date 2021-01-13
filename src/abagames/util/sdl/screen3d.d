@@ -8,7 +8,7 @@ module abagames.util.sdl.screen3d;
 private import std.conv;
 private import std.string;
 private import bindbc.sdl;
-private import opengl;
+private import bindbc.opengl;
 private import abagames.util.vector;
 private import abagames.util.sdl.screen;
 private import abagames.util.sdl.sdlexception;

@@ -132,6 +132,7 @@ public class RecordableMouse: Mouse {
   mixin RecordableInput!(MouseState);
  private:
 
+  alias getState = Mouse.getState;
   public MouseState getState(bool doRecord = true) {
     MouseState s = super.getState();
     if (doRecord)

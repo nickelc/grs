@@ -164,6 +164,7 @@ public class RecordablePad: Pad {
   mixin RecordableInput!(PadState);
  private:
 
+  alias getState = Pad.getState;
   public PadState getState(bool doRecord = true) {
     PadState s = super.getState();
     if (doRecord)

@@ -176,6 +176,7 @@ public class RecordableTwinStick: TwinStick {
   mixin RecordableInput!(TwinStickState);
  private:
 
+  alias getState = TwinStick.getState;
   public TwinStickState getState(bool doRecord = true) {
     TwinStickState s = super.getState();
     if (doRecord)

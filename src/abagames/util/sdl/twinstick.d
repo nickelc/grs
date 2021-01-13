@@ -8,7 +8,7 @@ module abagames.util.sdl.twinstick;
 private import std.stdio;
 private import std.string;
 private import std.math;
-private import SDL;
+private import bindbc.sdl;
 private import abagames.util.vector;
 private import abagames.util.sdl.input;
 private import abagames.util.sdl.recordableinput;
@@ -43,7 +43,7 @@ public class TwinStick: Input {
   }
 
   public void handleEvent(SDL_Event *event) {
-    keys = SDL_GetKeyState(null);
+    keys = SDL_GetKeyboardState(null);
   }
 
   public TwinStickState getState() {
@@ -70,21 +70,21 @@ public class TwinStick: Input {
     } else {
       state.left.x = state.left.y = state.right.x = state.right.y = 0;
     }
-    if (keys[SDLK_d] == SDL_PRESSED)
+    if (keys[SDL_SCANCODE_D] == SDL_PRESSED)
       state.left.x = 1;
-    if (keys[SDLK_l] == SDL_PRESSED)
+    if (keys[SDL_SCANCODE_L] == SDL_PRESSED)
       state.right.x = 1;
-    if (keys[SDLK_a] == SDL_PRESSED)
+    if (keys[SDL_SCANCODE_A] == SDL_PRESSED)
       state.left.x = -1;
-    if (keys[SDLK_j] == SDL_PRESSED)
+    if (keys[SDL_SCANCODE_J] == SDL_PRESSED)
       state.right.x = -1;
-    if (keys[SDLK_s] == SDL_PRESSED)
+    if (keys[SDL_SCANCODE_S] == SDL_PRESSED)
       state.left.y = -1;
-    if (keys[SDLK_k] == SDL_PRESSED)
+    if (keys[SDL_SCANCODE_K] == SDL_PRESSED)
       state.right.y = -1;
-    if (keys[SDLK_w] == SDL_PRESSED)
+    if (keys[SDL_SCANCODE_W] == SDL_PRESSED)
       state.left.y = 1;
-    if (keys[SDLK_i] == SDL_PRESSED)
+    if (keys[SDL_SCANCODE_I] == SDL_PRESSED)
       state.right.y = 1;
     return state;
   }

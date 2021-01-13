@@ -8,7 +8,7 @@ module abagames.util.sdl.texture;
 private import std.string;
 private import opengl;
 private import openglu;
-private import SDL;
+private import bindbc.sdl;
 private import abagames.util.sdl.sdlexception;
 
 /**
@@ -48,7 +48,7 @@ public class Texture {
       format.Gloss = 0;
       format.Bloss = 0;
       format.Aloss = 0;
-      format.alpha = 0;
+      // format.alpha = 0;
       SDL_Surface *cs = SDL_ConvertSurface(s, &format, SDL_SWSURFACE);
       surface[name] = cs;
       return cs;

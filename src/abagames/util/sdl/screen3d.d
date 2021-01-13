@@ -7,7 +7,7 @@ module abagames.util.sdl.screen3d;
 
 private import std.conv;
 private import std.string;
-private import SDL;
+private import bindbc.sdl;
 private import opengl;
 private import abagames.util.vector;
 private import abagames.util.sdl.screen;
@@ -24,6 +24,7 @@ public class Screen3D: Screen, SizableScreen {
   int _width = 640;
   int _height = 480;
   bool _windowMode = false;
+  SDL_Window* _window = null;
 
   protected abstract void init();
   protected abstract void close();
@@ -35,16 +36,18 @@ public class Screen3D: Screen, SizableScreen {
         "Unable to initialize SDL: " ~ std.conv.to!string(SDL_GetError()));
     }
     // Create an OpenGL screen.
-    Uint32 videoFlags;
+    SDL_WindowFlags videoFlags;
     if (_windowMode) {
-      videoFlags = SDL_OPENGL | SDL_RESIZABLE;
+      videoFlags = SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE;
     } else {
-      videoFlags = SDL_OPENGL | SDL_FULLSCREEN;
+      videoFlags = SDL_WINDOW_OPENGL | SDL_WINDOW_FULLSCREEN;
     }
-    if (SDL_SetVideoMode(_width, _height, 0, videoFlags) == null) {
+    _window = SDL_CreateWindow("", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOW_OPENGL, _width, _height, videoFlags);
+    if (_window is null) {
       throw new SDLInitFailedException
         ("Unable to create SDL screen: " ~ std.conv.to!string(SDL_GetError()));
     }
+    SDL_GL_CreateContext(_window);
     glViewport(0, 0, width, height);
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
     resized(_width, _height);
@@ -79,7 +82,7 @@ public class Screen3D: Screen, SizableScreen {
 
   public void flip() {
     handleError();
-    SDL_GL_SwapBuffers();
+    SDL_GL_SwapWindow(_window);
   }
 
   public void clear() {
@@ -95,7 +98,7 @@ public class Screen3D: Screen, SizableScreen {
   }
 
   protected void setCaption(string name) {
-    SDL_WM_SetCaption(std.string.toStringz(name), null);
+    SDL_SetWindowTitle(_window, std.string.toStringz(name));
   }
 
   public bool windowMode(bool v) {

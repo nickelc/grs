@@ -7,7 +7,7 @@ module abagames.util.sdl.mouse;
 
 private import std.stdio;
 private import std.string;
-private import SDL;
+private import bindbc.sdl;
 private import abagames.util.sdl.input;
 private import abagames.util.sdl.recordableinput;
 private import abagames.util.sdl.screen;
@@ -57,9 +57,9 @@ public class Mouse: Input {
     else if (state.y >= screen.height)
       state.x = screen.height - 1;*/
     state.button = 0;
-    if (btn & SDL_BUTTON(1))
+    if (btn & SDL_BUTTON!(1))
       state.button |= MouseState.Button.LEFT;
-    if (btn & SDL_BUTTON(3))
+    if (btn & SDL_BUTTON!(3))
       state.button |= MouseState.Button.RIGHT;
     adjustPos(state);
     return state;

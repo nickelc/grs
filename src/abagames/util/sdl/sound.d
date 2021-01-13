@@ -7,8 +7,7 @@ module abagames.util.sdl.sound;
 
 private import std.conv;
 private import std.string;
-private import SDL;
-private import SDL_mixer;
+private import bindbc.sdl;
 private import abagames.util.sdl.sdlexception;
 
 /**

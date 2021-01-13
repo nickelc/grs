@@ -5,7 +5,7 @@
  */
 module abagames.util.sdl.mainloop;
 
-private import SDL;
+private import bindbc.sdl;
 private import abagames.util.logger;
 private import abagames.util.rand;
 private import abagames.util.prefmanager;

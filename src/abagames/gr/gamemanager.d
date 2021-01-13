@@ -7,7 +7,7 @@ module abagames.gr.gamemanager;
 
 private import std.math;
 private import opengl;
-private import SDL;
+private import bindbc.sdl;
 private import abagames.util.vector;
 private import abagames.util.rand;
 private import abagames.util.sdl.gamemanager;
@@ -248,10 +248,14 @@ public class GameManager: abagames.util.sdl.gamemanager.GameManager {
 
   public override void draw() {
     SDL_Event e = mainLoop.event;
-    if (e.type == SDL_VIDEORESIZE) {
-      SDL_ResizeEvent re = e.resize;
-      if (re.w > 150 && re.h > 100)
-        screen.resized(re.w, re.h);
+    if (e.type == SDL_WINDOWEVENT) {
+      SDL_WindowEvent we = e.window;
+      if (we.event == SDL_WINDOWEVENT_RESIZED) {
+        auto w = we.data1;
+        auto h = we.data2;
+        if (w > 150 && h > 100)
+          screen.resized(w, h);
+      }
    }
    if (screen.startRenderToLuminousScreen()) {
       glPushMatrix();
